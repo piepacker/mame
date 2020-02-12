@@ -12,13 +12,12 @@ os:
 dist: bionic
 
 env:
-  - MSYSTEM="MINGW64" TARGET="mame" SUBTARGET="tiny" MINGW64="C:/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32"
+  - MSYSTEM="MINGW64" TARGET="mame" SUBTARGET="tiny" WINDRES="C:/ProgramData/chocolatey/bin/windres.exe"
 
 before_install:
   - if [ $TRAVIS_OS_NAME == 'linux' ]; then sudo apt-get install libgl1-mesa-dev; fi
   - if [ $TRAVIS_OS_NAME == 'windows' ]; then choco install make --ignore-checksums; fi
 
 script:
-  - ls "C:/ProgramData/chocolatey/bin"
   - make -f Makefile.libretro -j 4
 
