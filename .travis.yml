@@ -11,6 +11,9 @@ os:
 
 dist: bionic
 
+env:
+  - MSYSTEM="MINGW64"
+
 before_install:
   - if [ $TRAVIS_OS_NAME == 'windows' ]; then choco install make --ignore-checksums; fi
 
