@@ -9,6 +9,8 @@ os:
   - osx
   - windows
 
+dist: bionic
+
 before_install:
   - if [ $TRAVIS_OS_NAME == 'windows' ]; then choco install make --ignore-checksums; fi
 
