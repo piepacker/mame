@@ -19,7 +19,9 @@ before_install:
   - if [ $TRAVIS_OS_NAME == 'windows' ]; then choco install make --ignore-checksums; fi
 
 script:
-  - ls -l "C:/ProgramData/chocolatey/lib/mingw/"
+  - ls -l "C:/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/"
+  - ls -l "C:/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32"
+  - ls -l "C:/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/x86_64-w64-mingw32/bin"
   - make -f Makefile.libretro -j 4
 
 
