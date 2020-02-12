@@ -12,7 +12,7 @@ os:
 dist: bionic
 
 env:
-  - MSYSTEM="MINGW64" TARGET="mame" SUBTARGET="tiny" MINGW64="C:/Program\ Files/Git/mingw64"
+  - MSYSTEM="MINGW64" TARGET="mame" SUBTARGET="tiny" WINDRES="windres.exe"
 
 before_install:
   - if [ $TRAVIS_OS_NAME == 'linux' ]; then sudo apt-get install libgl1-mesa-dev; fi
