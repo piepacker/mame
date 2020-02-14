@@ -4,20 +4,39 @@ branches:
 
 language: cpp
 
-os:
-  - linux
-  - osx
-  - windows
-
-dist: bionic
-
 env:
-  - MSYSTEM="MINGW64" TARGET="mame" SUBTARGET="tiny" MINGW64="C:/ProgramData/chocolatey"
+  - TARGET="mame" SUBTARGET="tiny"
 
-before_install:
-  - if [ $TRAVIS_OS_NAME == 'linux' ]; then sudo apt-get install libgl1-mesa-dev; fi
-  - if [ $TRAVIS_OS_NAME == 'windows' ]; then choco install make --ignore-checksums; fi
-
-script:
-  - make -f Makefile.libretro -j 4
+matrix:
+  include:
+    - name: Linux
+      dist: bionic
+      before_install:
+        - sudo apt-get install libgl1-mesa-dev
+      script:
+        - make -f Makefile.libretro -j 4
+        - zip mame-${TRAVIS_OS_NAME}-${TRAVIS_CPU_ARCH}-${TRAVIS_TAG:1}.zip mametiny_libretro.so
+    - name: Linux
+      dist: bionic
+      arch: arm64
+      before_install:
+        - sudo apt-get install libgl1-mesa-dev zip
+      script:
+        - make -f Makefile.libretro -j 4
+        - zip mame-${TRAVIS_OS_NAME}-${TRAVIS_CPU_ARCH}-${TRAVIS_TAG:1}.zip mametiny_libretro.so
+    - name: OSX
+      os: osx
+      osx_image: xcode11.2
+      script:
+        - make -f Makefile.libretro -j 4
+        - zip mame-${TRAVIS_OS_NAME}-${TRAVIS_CPU_ARCH}-${TRAVIS_TAG:1}.zip mametiny_libretro.dylib
+    - name: Windows
+      os: windows
+      before_install:
+        - choco install make --ignore-checksums
+      env:
+        - MSYSTEM="MINGW64" MINGW64="C:/ProgramData/chocolatey"
+      script:
+        - make platform=win -f Makefile.libretro -j 4
+        - 7z a mame-${TRAVIS_OS_NAME}-${TRAVIS_CPU_ARCH}-${TRAVIS_TAG:1}.zip mametiny_libretro.dll
 
