@@ -17,6 +17,7 @@ jobs:
         with:
           submodules: true
 
+      - run: sudo apt-get install libgl1-mesa-dev
       - run: make -f Makefile.libretro SUBTARGET=tiny -j4
 
       - name: ZIP Release
