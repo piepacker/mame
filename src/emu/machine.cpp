@@ -357,7 +357,7 @@ int running_machine::run(bool quiet)
 
 		m_hard_reset_pending = false;
 
-#if defined(__EMSCRIPTEN__)
+#if defined(__EMSCRIPTEN__) && !defined(__LIBRETRO__)
 		// break out to our async javascript loop and halt
 		emscripten_set_running_machine(this);
 #endif
