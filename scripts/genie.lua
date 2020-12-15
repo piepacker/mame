@@ -1218,6 +1218,8 @@ configuration { "asmjs" }
 		"-std=gnu89",
 		"-Wno-implicit-function-declaration",
 		"-s USE_SDL_TTF=2",
+        "-s DISABLE_EXCEPTION_CATCHING=2",
+        "-s EXCEPTION_CATCHING_WHITELIST='[\"_ZN15running_machine17start_all_devicesEv\",\"_ZN12cli_frontend7executeEiPPc\"]'",
 	}
 	buildoptions_cpp {
 		"-std=c++17",

@@ -163,7 +163,7 @@ end
 			targetsuffix "_libretro_emscripten"
 			linkoptions {
 				 "-s DISABLE_EXCEPTION_CATCHING=2",
-				 "-s EXCEPTION_CATCHING_WHITELIST='[\"__ZN15running_machine17start_all_devicesEv\",\"__ZN12cli_frontend7executeEiPPc\"]'",			}
+				 "-s EXCEPTION_CATCHING_WHITELIST='[\"_ZN15running_machine17start_all_devicesEv\",\"_ZN12cli_frontend7executeEiPPc\"]'",			}
 		elseif _OPTIONS["targetos"]=="ios-arm" or _OPTIONS["LIBRETRO_IOS"]=="1" then
 			targetsuffix "_libretro_ios"
 			targetextension ".dylib"
