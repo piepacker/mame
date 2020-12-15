@@ -855,8 +855,9 @@ void core_options::parse_command_line(const std::vector<std::string> &args, int 
 		auto curentry = get_entry(optionname);
 		if (!curentry)
 		{
-			if (!ignore_unknown_options)
-				throw options_error_exception("Error: unknown option: -%s\n", optionname);
+			fprintf(stderr, "Error: unknown option: -%s\n", optionname);
+			//if (!ignore_unknown_options)
+			//	throw options_error_exception("Error: unknown option: -%s\n", optionname);
 			continue;
 		}
 
