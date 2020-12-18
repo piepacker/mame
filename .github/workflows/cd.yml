@@ -18,12 +18,14 @@ jobs:
           submodules: true
 
       - run: sudo apt-get install libgl1-mesa-dev
+      - run: make -f Makefile.libretro SUBTARGET=arcade -j4
+        # building tiny is free after arcade
       - run: make -f Makefile.libretro SUBTARGET=tiny -j4
 
       - name: ZIP Release
         uses: papeloto/action-zip@v1
         with:
-          files: mametiny_libretro.so
+          files: mametiny_libretro.so mamearcade_libretro.so
           dest: mametiny_libretro.so.zip
 
       - name: Get release
