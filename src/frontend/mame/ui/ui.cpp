@@ -941,8 +941,10 @@ bool mame_ui_manager::show_profiler() const
 
 void mame_ui_manager::show_menu()
 {
+#if 0
 	using namespace std::placeholders;
 	set_handler(ui_callback_type::MENU, std::bind(&ui::menu::ui_handler, _1, std::ref(*this)));
+#endif
 }
 
 
@@ -1176,6 +1178,7 @@ void mame_ui_manager::image_handler_ingame()
 
 uint32_t mame_ui_manager::handler_ingame(render_container &container)
 {
+#if 0
 	bool is_paused = machine().paused();
 
 	// first draw the FPS counter
@@ -1387,6 +1390,7 @@ uint32_t mame_ui_manager::handler_ingame(render_container &container)
 	else
 		machine().video().set_fastforward(false);
 
+#endif
 	return 0;
 }
 
