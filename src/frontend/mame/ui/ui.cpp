@@ -1212,6 +1212,7 @@ bool mame_ui_manager::show_profiler() const
 
 void mame_ui_manager::show_menu()
 {
+#if 0
 	for (auto *target = machine().render().first_target(); target; target = target->next())
 	{
 		if (!target->hidden())
@@ -1219,6 +1220,7 @@ void mame_ui_manager::show_menu()
 	}
 
 	set_handler(ui_callback_type::MENU, ui::menu::get_ui_handler(*this));
+#endif
 }
 
 
@@ -1468,6 +1470,7 @@ void mame_ui_manager::image_handler_ingame()
 
 uint32_t mame_ui_manager::handler_ingame(render_container &container)
 {
+#if 0
 	// let the OSD do its thing first
 	machine().osd().check_osd_inputs();
 
@@ -1709,6 +1712,7 @@ uint32_t mame_ui_manager::handler_ingame(render_container &container)
 	else
 		machine().video().set_fastforward(false);
 
+#endif
 	return 0;
 }
 
