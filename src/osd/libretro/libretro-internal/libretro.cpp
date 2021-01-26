@@ -920,6 +920,12 @@ bool retro_load_game(const struct retro_game_info *info)
    retro_load_ok = true;
    update_runtime_variables(true);
 
+   // Greg: The first retro_run call will actually load the game
+   // Piepacker architecture will call retro_serialize_size after
+   // retro_load_game. But retro_serialize_size is invalid if
+   // game isn't loaded. Hence this call here to load everything
+   retro_run();
+
    return true;
 }
 
