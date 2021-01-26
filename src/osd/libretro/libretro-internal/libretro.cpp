@@ -749,6 +749,13 @@ bool retro_load_game(const struct retro_game_info *info)
     extract_basename(basename, info->path, sizeof(basename));
     extract_directory(g_rom_dir, info->path, sizeof(g_rom_dir));
     strcpy(RPATH,info->path);
+
+    // Greg: The first retro_run call will actually load the game
+    // Piepacker architecture will call retro_serialize_size after
+    // retro_load_game. But retro_serialize_size is invalid if
+    // game isn't loaded. Hence this call here to load everything
+    retro_run();
+
     return true;
 }
 
