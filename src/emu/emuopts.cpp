@@ -182,6 +182,7 @@ const options_entry emu_options::s_option_entries[] =
 	{ nullptr,                                           nullptr,     core_options::option_type::HEADER,     "CORE DEBUGGING OPTIONS" },
 	{ OPTION_VERBOSE ";v",                               "0",         core_options::option_type::BOOLEAN,    "display additional diagnostic information" },
 	{ OPTION_LOG,                                        "0",         core_options::option_type::BOOLEAN,    "generate an error.log file" },
+	{ OPTION_PPDEBUG,                                    "0",         OPTION_BOOLEAN,    "debug save state" },
 	{ OPTION_OSLOG,                                      "0",         core_options::option_type::BOOLEAN,    "output error.log data to system diagnostic output (debugger or standard error)" },
 	{ OPTION_DEBUG ";d",                                 "0",         core_options::option_type::BOOLEAN,    "enable/disable debugger" },
 	{ OPTION_UPDATEINPAUSE,                              "0",         core_options::option_type::BOOLEAN,    "keep calling video updates while in pause" },
