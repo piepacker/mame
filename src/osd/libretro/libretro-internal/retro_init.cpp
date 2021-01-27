@@ -64,6 +64,7 @@ bool throttle_enable = false;
 bool game_specific_saves_enable = false;
 bool buttons_profiles = true;
 bool mame_paths_enable = false;
+bool pp_debug_enable = false;
 bool mame_4way_enable = false;
 char mame_4way_map[256];
 char joystick_deadzone[8];
@@ -336,6 +337,12 @@ static int getGameInfo(const char *gameName, int *rotation, int *driverIndex, bo
    return gameFound;
 }
 
+// ES: this function is a copy of Add_Option but we need it to be declared here
+static void Add_Option2(const char *option)
+{
+   sprintf(XARGV[PARAMCOUNT++], "%s", option);
+}
+
 void Extract_AllPath(const char *srcpath)
 {
    int result_value = 0;
@@ -363,6 +370,11 @@ void Extract_AllPath(const char *srcpath)
       strcpy(MsystemName, srcpath);
       result_value |= 2;
       log_cb(RETRO_LOG_ERROR, "Error parsing system name: \"%s\"\n", srcpath);
+   if(pp_debug_enable)
+      Add_Option2("-ppdebug");
+   else
+      Add_Option2("-noppdebug");
+
    }
 
    /* Get the parent path. */
