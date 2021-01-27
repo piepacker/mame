@@ -240,6 +240,7 @@ public:
 private:
 	// internal helpers
 	u32 signature() const;
+	void dump_registry_verbose() const;
 	void dump_registry() const;
 	static save_error validate_header(const u8 *header, const char *gamename, u32 signature, void (CLIB_DECL *errormsg)(const char *fmt, ...), const char *error_prefix);
 
