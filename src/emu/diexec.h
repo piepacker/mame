@@ -259,13 +259,24 @@ private:
 		int default_irq_callback();
 
 		device_execute_interface *m_execute;// pointer to the execute interface
+#if defined(__POINTER_WIDTH__) && __POINTER_WIDTH__ == 32
+		// Pad 32 bits build to ensure constant structure size for savestate
+		// m_execute will be 4B on 32 bits vs 8B on 64 bits
+		u32				m_pad0;
+#endif
 		int             m_linenum;          // which input line we are
 
 		s32             m_stored_vector;    // most recently written vector
 		s32             m_curvector;        // most recently processed vector
-		u8              m_curstate;         // most recently processed state
+		u32             m_curstate;         // most recently processed state
 		s32             m_queue[32];        // queue of pending events
 		int             m_qindex;           // index within the queue
+#if defined(__POINTER_WIDTH__) && __POINTER_WIDTH__ == 32
+		// Pad 32 bits build to ensure constant structure size for savestate
+		// Class alignment will be based on the arch. We want an extra 4B
+		// to be 8B aligned
+		u32				m_pad1;
+#endif
 
 	private:
 		TIMER_CALLBACK_MEMBER(empty_event_queue);
