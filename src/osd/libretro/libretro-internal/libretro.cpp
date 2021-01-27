@@ -481,6 +481,17 @@ video_changed=true;
          sprintf(mame_4way_map, "%s", "4444s8888.444408888.444458888.444555888.ss5.222555666.222256666.222206666.222206666");
    }
 
+   var.key   = "pp_debug";
+   var.value = NULL;
+
+   if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && var.value)
+   {
+       if (!strcmp(var.value, "enabled"))
+           pp_debug_enable = true;
+       if (!strcmp(var.value, "disabled"))
+           pp_debug_enable = false;
+   }
+
    struct retro_input_descriptor desc[] = {
       { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_LEFT,  "Joy Left" },
       { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_RIGHT,  "Joy Right" },

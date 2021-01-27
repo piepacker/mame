@@ -59,6 +59,7 @@ extern const char *retro_system_directory;
 extern const char *retro_content_directory;
 extern int retro_pause;
 
+extern bool pp_debug_enable;
 extern bool experimental_cmdline;
 extern bool hide_gameinfo;
 extern bool mouse_enable;
