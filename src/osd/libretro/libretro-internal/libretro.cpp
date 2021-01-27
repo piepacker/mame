@@ -481,6 +481,7 @@ static void check_variables(void)
             width = strtoul(pch, NULL, 0);
 
          pch = strtok(NULL, "x");
+
          if (pch)
             height = strtoul(pch, NULL, 0);
 
@@ -499,6 +500,16 @@ static void check_variables(void)
             }
          }
       }
+   }
+
+   var.key   = "pp_debug";
+   var.value = NULL;
+   if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && var.value)
+   {
+       if (!strcmp(var.value, "enabled"))
+           pp_debug_enable = true;
+       if (!strcmp(var.value, "disabled"))
+           pp_debug_enable = false;
    }
 
    var.key   = CORE_NAME "_cpu_overclock";

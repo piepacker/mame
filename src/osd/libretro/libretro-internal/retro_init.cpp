@@ -64,6 +64,7 @@ bool throttle_enable = false;
 bool game_specific_saves_enable = false;
 bool buttons_profiles = true;
 bool mame_paths_enable = false;
+bool pp_debug_enable = false;
 bool mame_4way_enable = false;
 char mame_4way_map[256];
 char joystick_deadzone[8];
@@ -516,6 +517,11 @@ static void Set_Default_Option(void)
       Add_Option("-cheat");
    else
       Add_Option("-nocheat");
+
+   if(pp_debug_enable)
+      Add_Option("-ppdebug");
+   else
+      Add_Option("-noppdebug");
 
    if (write_config_enable)
       Add_Option("-writeconfig");
