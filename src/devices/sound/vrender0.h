@@ -115,7 +115,6 @@ private:
 			std::fill(std::begin(EnvTarget), std::end(EnvTarget), 0);
 		}
 
-		memory_access<23, 1, 0, ENDIANNESS_LITTLE>::cache *Cache;
 		u32 CurSAddr = 0; // Current Address Pointer, 22.10 Fixed Point
 		s32 EnvVol = 0; // Envelope Volume (Overall Volume), S.7.16 Fixed Point
 		u8 EnvStage = 1; // Envelope Stage
@@ -128,6 +127,12 @@ private:
 		u8 RChnVol = 0; // Right Volume, 7 bit unsigned
 		s32 EnvRate[4]; // Envenloe Rate per Each stages, S.16 Fixed Point
 		u8 EnvTarget[4]; // Envelope Target Volume per Each stages, High 7 Bits
+
+		memory_access<23, 1, 0, ENDIANNESS_LITTLE>::cache *Cache;
+#if defined(__POINTER_WIDTH__) && __POINTER_WIDTH__ == 32
+		u32 m_pad;
+#endif
+
 		u16 read(offs_t offset);
 		void write(offs_t offset, u16 data, u16 mem_mask);
 	};
