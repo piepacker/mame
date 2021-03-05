@@ -21,6 +21,8 @@
 
 extern const char bare_build_version[];
 
+#define SERIALIZE_WAIT_FRAMES 5
+static int s_cannot_serialize = SERIALIZE_WAIT_FRAMES;
 int retro_pause = 0;
 bool retro_load_ok=false;
 
@@ -653,6 +655,7 @@ void retro_deinit(void)
 
 void retro_reset (void)
 {
+   s_cannot_serialize = SERIALIZE_WAIT_FRAMES;
    mame_reset = 1;
    if (mame_machine_manager::instance() != NULL && mame_machine_manager::instance()->machine() != NULL)
 	   mame_machine_manager::instance()->machine()->schedule_soft_reset();
@@ -661,6 +664,7 @@ void retro_reset (void)
 void retro_run (void)
 {
    bool updated = false;
+   if (s_cannot_serialize >= 0) s_cannot_serialize--;
 
    if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE_UPDATE, &updated) && updated)
    {
@@ -718,6 +722,7 @@ void retro_run (void)
 bool retro_load_game(const struct retro_game_info *info)
 {
     char basename[256];
+    s_cannot_serialize = SERIALIZE_WAIT_FRAMES;
 
     check_variables();
 
@@ -779,6 +784,9 @@ size_t retro_serialize_size(void)
 }
 bool retro_serialize(void *data, size_t size)
 {
+	if (s_cannot_serialize >= 0)
+		return false;
+
 	if ( mame_machine_manager::instance() != NULL && mame_machine_manager::instance()->machine() != NULL &&
 			ram_state::get_size(mame_machine_manager::instance()->machine()->save()) > 0)
 		return (mame_machine_manager::instance()->machine()->save().write_buffer((u8*)data, size) == STATERR_NONE);
