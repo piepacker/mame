@@ -495,6 +495,9 @@ void save_manager::dump_registry() const
 
 void save_manager::dump_registry_verbose() const
 {
+	if (!machine().options().pp_debug())
+		return;
+
 	// Same as dump_registry but always enabled
 	for (auto &entry : m_entry_list)
 		printf("%s: %u x %u x %u (%u)\n", entry->m_name.c_str(), entry->m_typesize, entry->m_typecount, entry->m_blockcount, entry->m_stride);

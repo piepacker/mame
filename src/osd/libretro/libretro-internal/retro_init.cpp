@@ -61,6 +61,7 @@ bool throttle_enable = false;
 bool game_specific_saves_enable = false;
 bool buttons_profiles = true;
 bool mame_paths_enable = false;
+bool pp_debug_enable = false;
 
 
 bool res_43 = false;
@@ -360,6 +361,11 @@ static void Set_Default_Option(void)
 
    if(auto_save_enable)
       Add_Option("-autosave");
+
+   if(pp_debug_enable)
+      Add_Option("-ppdebug");
+   else
+      Add_Option("-noppdebug");
 
    if(game_specific_saves_enable)
    {

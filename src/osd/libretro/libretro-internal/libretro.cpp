@@ -428,6 +428,16 @@ video_changed=true;
          mame_paths_enable = false;
    }
 
+    var.key   = "pp_debug";
+    var.value = NULL;
+    if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && var.value)
+    {
+        if (!strcmp(var.value, "enabled"))
+            pp_debug_enable = true;
+        if (!strcmp(var.value, "disabled"))
+            pp_debug_enable = false;
+    }
+
    struct retro_input_descriptor desc[] = {
       { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_LEFT,  "Joy Left" },
       { 0, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_RIGHT,  "Joy Right" },

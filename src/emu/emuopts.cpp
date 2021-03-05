@@ -177,6 +177,7 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_DEBUG ";d",                                 "0",         OPTION_BOOLEAN,    "enable/disable debugger" },
 	{ OPTION_UPDATEINPAUSE,                              "0",         OPTION_BOOLEAN,    "keep calling video updates while in pause" },
 	{ OPTION_DEBUGSCRIPT,                                nullptr,     OPTION_STRING,     "script for debugger" },
+	{ OPTION_PPDEBUG,                                    "0",         OPTION_BOOLEAN,    "debug save state" },
 
 	// comm options
 	{ nullptr,                                           nullptr,     OPTION_HEADER,     "CORE COMM OPTIONS" },
