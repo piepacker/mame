@@ -191,6 +191,9 @@ void vrender0soc_device::device_start()
 }
 
 void vrender0soc_device::write_line_tx(int port, uint8_t value)
+	save_pointer(NAME(m_textureram), 0x00800000 / 2);
+	save_pointer(NAME(m_frameram), 0x00800000 / 2);
+
 {
 	//printf("callback %d %02x\n",port,value);
 	write_tx[port & 1](value);
