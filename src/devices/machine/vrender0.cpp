@@ -188,6 +188,9 @@ void vrender0soc_device::device_start()
 	save_item(NAME(m_dma[1].src));
 	save_item(NAME(m_dma[1].dst));
 	save_item(NAME(m_dma[1].size));
+
+	save_pointer(NAME(m_textureram), 0x00800000 / 2);
+	save_pointer(NAME(m_frameram), 0x00800000 / 2);
 }
 
 void vrender0soc_device::write_line_tx(int port, uint8_t value)
