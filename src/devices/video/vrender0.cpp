@@ -36,6 +36,10 @@ vr0video_device::vr0video_device(const machine_config &mconfig, const char *tag,
 	, m_idleskip_cb(*this)
 
 {
+	// vr0video_device::execute_flipping can be executed before any write
+	// to these control variables
+	m_render_start = false;
+	m_queue_front = m_queue_rear = 0;
 }
 
 void vr0video_device::regs_map(address_map &map)
