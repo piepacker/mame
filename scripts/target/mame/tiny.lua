@@ -18,6 +18,8 @@
 
 CPUS["Z80"] = true
 CPUS["M680X0"] = true
+CPUS["MCS51"] = true
+CPUS["TMS340X0"] = true
 CPUS["SE3208"] = true
 
 --------------------------------------------------
@@ -26,12 +28,19 @@ CPUS["SE3208"] = true
 --------------------------------------------------
 
 SOUNDS["YM2610"] = true
+SOUNDS["GAELCO_CG1V"] = true
+SOUNDS["GAELCO_GAE1"] = true
+SOUNDS["OKIM6295"] = true
 SOUNDS["VRENDER0"] = true
+SOUNDS["SEGAPCM"] = true
+SOUNDS["YM2151"] = true
 
 --------------------------------------------------
 -- specify available video cores
 --------------------------------------------------
 
+VIDEOS["BUFSPRITE"] = true
+VIDEOS["TLC34076"] = true
 VIDEOS["VRENDER0"] = true
 
 --------------------------------------------------
@@ -48,6 +57,9 @@ MACHINES["DS1302"] = true
 MACHINES["VRENDER0"] = true
 MACHINES["EEPROMDEV"] = true
 MACHINES["ALPHA_8921"] = true
+MACHINES["68681"] = true
+MACHINES["ADC0804"] = true
+MACHINES["I8255"] = true
 
 --------------------------------------------------
 -- specify available bus cores
@@ -82,17 +94,47 @@ function createProjects_mame_tiny(_target, _subtarget)
 		GEN_DIR  .. "mame/layout",
 	}
 
-files{
-        MAME_DIR .. "src/mame/drivers/neogeo.cpp",
-        MAME_DIR .. "src/mame/includes/neogeo.h",
-        MAME_DIR .. "src/mame/video/neogeo.cpp",
-        MAME_DIR .. "src/mame/drivers/neopcb.cpp",
-        MAME_DIR .. "src/mame/video/neogeo_spr.cpp",
-        MAME_DIR .. "src/mame/video/neogeo_spr.h",
-        MAME_DIR .. "src/mame/machine/ng_memcard.cpp",
-        MAME_DIR .. "src/mame/machine/ng_memcard.h",
-        MAME_DIR .. "src/mame/drivers/crystal.cpp",
-}
+	files{
+		MAME_DIR .. "src/mame/drivers/neogeo.cpp",
+		MAME_DIR .. "src/mame/includes/neogeo.h",
+		MAME_DIR .. "src/mame/video/neogeo.cpp",
+		MAME_DIR .. "src/mame/drivers/neopcb.cpp",
+		MAME_DIR .. "src/mame/video/neogeo_spr.cpp",
+		MAME_DIR .. "src/mame/video/neogeo_spr.h",
+		MAME_DIR .. "src/mame/machine/ng_memcard.cpp",
+		MAME_DIR .. "src/mame/machine/ng_memcard.h",
+
+		-- aligatoruna
+		MAME_DIR .. "src/mame/drivers/gaelco2.cpp",
+		MAME_DIR .. "src/mame/includes/gaelco2.h",
+		MAME_DIR .. "src/mame/machine/gaelco2.cpp",
+		MAME_DIR .. "src/mame/video/gaelco2.cpp",
+		MAME_DIR .. "src/mame/machine/gaelco_ds5002fp.cpp",
+		MAME_DIR .. "src/mame/machine/gaelco_ds5002fp.h",
+
+		-- for ultennis
+		MAME_DIR .. "src/mame/drivers/artmagic.cpp",
+		MAME_DIR .. "src/mame/includes/artmagic.h",
+		MAME_DIR .. "src/mame/video/artmagic.cpp",
+
+		-- evosocc
+		MAME_DIR .. "src/mame/drivers/crystal.cpp",
+
+		-- sharrier
+		MAME_DIR .. "src/mame/drivers/segahang.cpp",
+		MAME_DIR .. "src/mame/includes/segahang.h",
+		MAME_DIR .. "src/mame/video/segahang.cpp",
+		MAME_DIR .. "src/mame/machine/fd1089.cpp",
+		MAME_DIR .. "src/mame/machine/fd1089.h",
+		MAME_DIR .. "src/mame/machine/fd1094.cpp",
+		MAME_DIR .. "src/mame/machine/fd1094.h",
+		MAME_DIR .. "src/mame/video/segaic16.cpp",
+		MAME_DIR .. "src/mame/video/segaic16.h",
+		MAME_DIR .. "src/mame/video/segaic16_road.cpp",
+		MAME_DIR .. "src/mame/video/segaic16_road.h",
+		MAME_DIR .. "src/mame/video/sega16sp.cpp",
+		MAME_DIR .. "src/mame/video/sega16sp.h",
+	}
 end
 
 function linkProjects_mame_tiny(_target, _subtarget)
