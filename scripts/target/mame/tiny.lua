@@ -18,6 +18,7 @@
 
 CPUS["Z80"] = true
 CPUS["M680X0"] = true
+CPUS["MCS51"] = true
 CPUS["SE3208"] = true
 
 --------------------------------------------------
@@ -26,12 +27,15 @@ CPUS["SE3208"] = true
 --------------------------------------------------
 
 SOUNDS["YM2610"] = true
+SOUNDS["GAELCO_CG1V"] = true
+SOUNDS["GAELCO_GAE1"] = true
 SOUNDS["VRENDER0"] = true
 
 --------------------------------------------------
 -- specify available video cores
 --------------------------------------------------
 
+VIDEOS["BUFSPRITE"] = true
 VIDEOS["VRENDER0"] = true
 
 --------------------------------------------------
@@ -81,17 +85,27 @@ function createProjects_mame_tiny(_target, _subtarget)
 		GEN_DIR  .. "mame/layout",
 	}
 
-files{
-	MAME_DIR .. "src/mame/drivers/neogeo.cpp",
-	MAME_DIR .. "src/mame/includes/neogeo.h",
-	MAME_DIR .. "src/mame/video/neogeo.cpp",
-	MAME_DIR .. "src/mame/drivers/neopcb.cpp",
-	MAME_DIR .. "src/mame/video/neogeo_spr.cpp",
-	MAME_DIR .. "src/mame/video/neogeo_spr.h",
-	MAME_DIR .. "src/mame/machine/ng_memcard.cpp",
-	MAME_DIR .. "src/mame/machine/ng_memcard.h",
-	MAME_DIR .. "src/mame/drivers/crystal.cpp",
-}
+	files{
+			MAME_DIR .. "src/mame/drivers/neogeo.cpp",
+			MAME_DIR .. "src/mame/includes/neogeo.h",
+			MAME_DIR .. "src/mame/video/neogeo.cpp",
+			MAME_DIR .. "src/mame/drivers/neopcb.cpp",
+			MAME_DIR .. "src/mame/video/neogeo_spr.cpp",
+			MAME_DIR .. "src/mame/video/neogeo_spr.h",
+			MAME_DIR .. "src/mame/machine/ng_memcard.cpp",
+			MAME_DIR .. "src/mame/machine/ng_memcard.h",
+
+			-- aligatoruna
+			MAME_DIR .. "src/mame/drivers/gaelco2.cpp",
+			MAME_DIR .. "src/mame/includes/gaelco2.h",
+			MAME_DIR .. "src/mame/machine/gaelco2.cpp",
+			MAME_DIR .. "src/mame/video/gaelco2.cpp",
+			MAME_DIR .. "src/mame/machine/gaelco_ds5002fp.cpp",
+			MAME_DIR .. "src/mame/machine/gaelco_ds5002fp.h",
+
+			-- evosocc
+			MAME_DIR .. "src/mame/drivers/crystal.cpp",
+	}
 end
 
 function linkProjects_mame_tiny(_target, _subtarget)
