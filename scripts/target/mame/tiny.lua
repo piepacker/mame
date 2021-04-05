@@ -20,6 +20,7 @@ CPUS["Z80"] = true
 CPUS["M680X0"] = true
 CPUS["MCS51"] = true
 CPUS["TMS340X0"] = true
+CPUS["SE3208"] = true
 
 --------------------------------------------------
 -- Specify all the sound cores necessary for the
@@ -30,6 +31,7 @@ SOUNDS["YM2610"] = true
 SOUNDS["GAELCO_CG1V"] = true
 SOUNDS["GAELCO_GAE1"] = true
 SOUNDS["OKIM6295"] = true
+SOUNDS["VRENDER0"] = true
 
 --------------------------------------------------
 -- specify available video cores
@@ -37,6 +39,7 @@ SOUNDS["OKIM6295"] = true
 
 VIDEOS["BUFSPRITE"] = true
 VIDEOS["TLC34076"] = true
+VIDEOS["VRENDER0"] = true
 
 --------------------------------------------------
 -- specify available machine cores
@@ -50,6 +53,8 @@ MACHINES["Z80DAISY"] = true
 MACHINES["UPD1990A"] = true
 MACHINES["EEPROMDEV"] = true
 MACHINES["68681"] = true
+MACHINES["DS1302"] = true
+MACHINES["VRENDER0"] = true
 
 --------------------------------------------------
 -- specify available bus cores
@@ -106,6 +111,9 @@ function createProjects_mame_tiny(_target, _subtarget)
 		MAME_DIR .. "src/mame/drivers/artmagic.cpp",
 		MAME_DIR .. "src/mame/includes/artmagic.h",
 		MAME_DIR .. "src/mame/video/artmagic.cpp",
+
+		-- for evosocc
+		MAME_DIR .. "src/mame/drivers/crystal.cpp",
 	}
 end
 
