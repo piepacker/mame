@@ -32,6 +32,8 @@ SOUNDS["GAELCO_CG1V"] = true
 SOUNDS["GAELCO_GAE1"] = true
 SOUNDS["OKIM6295"] = true
 SOUNDS["VRENDER0"] = true
+SOUNDS["SEGAPCM"] = true
+SOUNDS["YM2151"] = true
 
 --------------------------------------------------
 -- specify available video cores
@@ -55,6 +57,8 @@ MACHINES["VRENDER0"] = true
 MACHINES["EEPROMDEV"] = true
 MACHINES["ALPHA_8921"] = true
 MACHINES["68681"] = true
+MACHINES["ADC0804"] = true
+MACHINES["I8255"] = true
 
 --------------------------------------------------
 -- specify available bus cores
@@ -114,6 +118,21 @@ function createProjects_mame_tiny(_target, _subtarget)
 
 			-- evosocc
 			MAME_DIR .. "src/mame/drivers/crystal.cpp",
+
+		-- sharrier
+		MAME_DIR .. "src/mame/drivers/segahang.cpp",
+		MAME_DIR .. "src/mame/includes/segahang.h",
+		MAME_DIR .. "src/mame/video/segahang.cpp",
+		MAME_DIR .. "src/mame/machine/fd1089.cpp",
+		MAME_DIR .. "src/mame/machine/fd1089.h",
+		MAME_DIR .. "src/mame/machine/fd1094.cpp",
+		MAME_DIR .. "src/mame/machine/fd1094.h",
+		MAME_DIR .. "src/mame/video/segaic16.cpp",
+		MAME_DIR .. "src/mame/video/segaic16.h",
+		MAME_DIR .. "src/mame/video/segaic16_road.cpp",
+		MAME_DIR .. "src/mame/video/segaic16_road.h",
+		MAME_DIR .. "src/mame/video/sega16sp.cpp",
+		MAME_DIR .. "src/mame/video/sega16sp.h",
 	}
 end
 
