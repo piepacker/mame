@@ -19,6 +19,7 @@
 CPUS["Z80"] = true
 CPUS["M680X0"] = true
 CPUS["MCS51"] = true
+CPUS["TMS340X0"] = true
 
 --------------------------------------------------
 -- Specify all the sound cores necessary for the
@@ -28,12 +29,14 @@ CPUS["MCS51"] = true
 SOUNDS["YM2610"] = true
 SOUNDS["GAELCO_CG1V"] = true
 SOUNDS["GAELCO_GAE1"] = true
+SOUNDS["OKIM6295"] = true
 
 --------------------------------------------------
 -- specify available video cores
 --------------------------------------------------
 
 VIDEOS["BUFSPRITE"] = true
+VIDEOS["TLC34076"] = true
 
 --------------------------------------------------
 -- specify available machine cores
@@ -46,6 +49,7 @@ MACHINES["WATCHDOG"] = true
 MACHINES["Z80DAISY"] = true
 MACHINES["UPD1990A"] = true
 MACHINES["EEPROMDEV"] = true
+MACHINES["68681"] = true
 
 --------------------------------------------------
 -- specify available bus cores
@@ -90,6 +94,7 @@ function createProjects_mame_tiny(_target, _subtarget)
         MAME_DIR .. "src/mame/machine/ng_memcard.cpp",
         MAME_DIR .. "src/mame/machine/ng_memcard.h",
 
+		-- for aligatorun on gaelco2
 		MAME_DIR .. "src/mame/drivers/atvtrack.cpp",
 		MAME_DIR .. "src/mame/drivers/gaelco.cpp",
 		MAME_DIR .. "src/mame/includes/gaelco.h",
@@ -137,6 +142,11 @@ function createProjects_mame_tiny(_target, _subtarget)
 		MAME_DIR .. "src/mame/machine/gaelco_ds5002fp.cpp",
 		MAME_DIR .. "src/mame/machine/gaelco_ds5002fp.h",
 		MAME_DIR .. "src/mame/drivers/bigkarnk_ms.cpp",
+
+		-- for ultennis
+		MAME_DIR .. "src/mame/drivers/artmagic.cpp",
+		MAME_DIR .. "src/mame/includes/artmagic.h",
+		MAME_DIR .. "src/mame/video/artmagic.cpp",
 	}
 end
 
