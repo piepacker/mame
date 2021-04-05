@@ -19,6 +19,7 @@
 CPUS["Z80"] = true
 CPUS["M680X0"] = true
 CPUS["MCS51"] = true
+CPUS["TMS340X0"] = true
 CPUS["SE3208"] = true
 
 --------------------------------------------------
@@ -29,6 +30,7 @@ CPUS["SE3208"] = true
 SOUNDS["YM2610"] = true
 SOUNDS["GAELCO_CG1V"] = true
 SOUNDS["GAELCO_GAE1"] = true
+SOUNDS["OKIM6295"] = true
 SOUNDS["VRENDER0"] = true
 
 --------------------------------------------------
@@ -36,6 +38,7 @@ SOUNDS["VRENDER0"] = true
 --------------------------------------------------
 
 VIDEOS["BUFSPRITE"] = true
+VIDEOS["TLC34076"] = true
 VIDEOS["VRENDER0"] = true
 
 --------------------------------------------------
@@ -51,6 +54,7 @@ MACHINES["DS1302"] = true
 MACHINES["VRENDER0"] = true
 MACHINES["EEPROMDEV"] = true
 MACHINES["ALPHA_8921"] = true
+MACHINES["68681"] = true
 
 --------------------------------------------------
 -- specify available bus cores
@@ -102,6 +106,11 @@ function createProjects_mame_tiny(_target, _subtarget)
 			MAME_DIR .. "src/mame/video/gaelco2.cpp",
 			MAME_DIR .. "src/mame/machine/gaelco_ds5002fp.cpp",
 			MAME_DIR .. "src/mame/machine/gaelco_ds5002fp.h",
+
+		-- for ultennis
+		MAME_DIR .. "src/mame/drivers/artmagic.cpp",
+		MAME_DIR .. "src/mame/includes/artmagic.h",
+		MAME_DIR .. "src/mame/video/artmagic.cpp",
 
 			-- evosocc
 			MAME_DIR .. "src/mame/drivers/crystal.cpp",
