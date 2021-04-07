@@ -324,6 +324,8 @@ void gaelco_gae1_device::device_clock_changed()
 
 	if (LOG_WAVE)
 		wavraw = util::wav_open("gae1_snd.wav", rate, 2);
+
+	save_item(NAME(m_sndregs));
 }
 
 
