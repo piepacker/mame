@@ -54,9 +54,9 @@ private:
 
 	struct sound_channel
 	{
-		int active;         // is it playing?
-		int loop;           // = 0 no looping, = 1 looping
-		int chunkNum;       // current chunk if looping
+		int16_t chunkNum;       // current chunk if looping
+		uint8_t active;         // is it playing?
+		uint8_t loop;           // = 0 no looping, = 1 looping
 	};
 
 	sound_stream *m_stream;                     /* our stream */
