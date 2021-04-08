@@ -290,6 +290,9 @@ void gaelco_gae1_device::device_start()
 	}
 
 	save_item(NAME(m_sndregs));
+	save_item(STRUCT_MEMBER(m_channel, active));
+	save_item(STRUCT_MEMBER(m_channel, loop));
+	save_item(STRUCT_MEMBER(m_channel, chunkNum));
 }
 
 void gaelco_gae1_device::device_reset()
