@@ -18,9 +18,10 @@ jobs:
           submodules: true
 
       - run: sudo apt-get install libgl1-mesa-dev
-      - run: make -f Makefile.libretro SUBTARGET=arcade -j4
+        # arcade is way too slow to build, let's disable it
+        #- run: make -f Makefile.libretro SUBTARGET=arcade -j2
         # building tiny is free after arcade
-      - run: make -f Makefile.libretro SUBTARGET=tiny -j4
+      - run: make -f Makefile.libretro SUBTARGET=tiny -j2
 
       - name: ZIP Release
         uses: papeloto/action-zip@v1
