@@ -21,6 +21,7 @@ CPUS["M680X0"] = true
 CPUS["MCS51"] = true
 CPUS["TMS340X0"] = true
 CPUS["SE3208"] = true
+CPUS["PIC16C5X"] = true
 
 --------------------------------------------------
 -- Specify all the sound cores necessary for the
@@ -59,6 +60,7 @@ MACHINES["ALPHA_8921"] = true
 MACHINES["68681"] = true
 MACHINES["ADC0804"] = true
 MACHINES["I8255"] = true
+MACHINES["TICKET"] = true
 
 --------------------------------------------------
 -- specify available bus cores
@@ -133,6 +135,18 @@ function createProjects_mame_tiny(_target, _subtarget)
 		MAME_DIR .. "src/mame/video/segaic16_road.h",
 		MAME_DIR .. "src/mame/video/sega16sp.cpp",
 		MAME_DIR .. "src/mame/video/sega16sp.h",
+
+		-- thoop2a
+		MAME_DIR .. "src/mame/video/thoop2.cpp",
+		MAME_DIR .. "src/mame/drivers/thoop2.cpp",
+
+		-- hdrtimes
+		MAME_DIR .. "src/mame/video/playmark.cpp",
+		MAME_DIR .. "src/mame/drivers/playmark.cpp",
+
+		-- stlforce
+		MAME_DIR .. "src/mame/drivers/stlforce.cpp",
+		MAME_DIR .. "src/mame/video/edevices.cpp",
 	}
 end
 
