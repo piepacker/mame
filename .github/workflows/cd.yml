@@ -18,8 +18,9 @@ jobs:
           submodules: true
 
       - run: sudo apt-get install libgl1-mesa-dev
-        # arcade is way too slow to build, let's disable it
-        #- run: make -f Makefile.libretro SUBTARGET=arcade -j2
+        # arcade is very slow to build. Limit to 1CPU due to huge memory requirement of
+        # few files
+      - run: make -f Makefile.libretro SUBTARGET=arcade -j1
         # building tiny is free after arcade
       - run: make -f Makefile.libretro SUBTARGET=tiny -j2
 
