@@ -449,7 +449,7 @@ void playmark_state::oki_map(address_map &map)
 	PORT_DIPNAME( 0x01, 0x01, "Coin Slots" ) PORT_DIPLOCATION("DSW1:1") \
 	PORT_DIPSETTING(    0x00, "Separate" ) \
 	PORT_DIPSETTING(    0x01, "Common" ) \
-	PORT_DIPNAME( 0x1e, 0x1e, DEF_STR( Coinage ) ) PORT_CONDITION("DSW1", 0x01, EQUALS, 0x01)  PORT_DIPLOCATION("DSW1:2,3,4,5") \
+	PORT_DIPNAME( 0x00, 0x1e, DEF_STR( Coinage ) ) PORT_CONDITION("DSW1", 0x01, EQUALS, 0x01)  PORT_DIPLOCATION("DSW1:2,3,4,5") \
 	PORT_DIPSETTING(    0x14, DEF_STR( 6C_1C ) ) \
 	PORT_DIPSETTING(    0x16, DEF_STR( 5C_1C ) ) \
 	PORT_DIPSETTING(    0x18, DEF_STR( 4C_1C ) ) \
