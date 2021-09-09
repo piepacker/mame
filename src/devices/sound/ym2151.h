@@ -127,9 +127,17 @@ private:
 		uint32_t      dt2;                    /* current DT2 (detune 2) value */
 
 		signed int *connect;                /* operator output 'direction' */
+#if defined(__POINTER_WIDTH__) && __POINTER_WIDTH__ == 32
+		// Pad the above pointer in 32 bits to be savestate compatible with 64 bits build
+		u32         pad_pointer1;
+#endif
 
 		/* only M1 (operator 0) is filled with this data: */
 		signed int *mem_connect;            /* where to put the delayed sample (MEM) */
+#if defined(__POINTER_WIDTH__) && __POINTER_WIDTH__ == 32
+		// Pad the above pointer in 32 bits to be savestate compatible with 64 bits build
+		u32         pad_pointer2;
+#endif
 		int32_t       mem_value;              /* delayed sample (MEM) value */
 
 		/* channel specific data; note: each operator number 0 contains channel specific data */
