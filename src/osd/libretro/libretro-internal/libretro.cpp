@@ -834,7 +834,7 @@ void retro_reset(void)
    s_cannot_serialize = SERIALIZE_WAIT_FRAMES;
    mame_reset = 1;
    if (mame_machine_manager::instance() != NULL && mame_machine_manager::instance()->machine() != NULL)
-      mame_machine_manager::instance()->machine()->schedule_soft_reset();
+      mame_machine_manager::instance()->machine()->schedule_hard_reset();
 }
 
 void retro_run(void)
