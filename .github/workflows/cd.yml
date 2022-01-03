@@ -20,9 +20,9 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install libgl1-mesa-dev
         # arcade is very slow to build. Limit to 1CPU due to huge memory requirement of
         # few files
-      - run: make -f Makefile.libretro SUBTARGET=arcade -j1
+      - run: make -f Makefile.libretro SUBTARGET=arcade STRIP_SYMBOLS=1 -j1
         # building tiny is free after arcade
-      - run: make -f Makefile.libretro SUBTARGET=tiny -j2
+      - run: make -f Makefile.libretro SUBTARGET=tiny STRIP_SYMBOLS=1 -j2
 
       - name: ZIP Release
         uses: papeloto/action-zip@v1
