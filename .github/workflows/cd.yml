@@ -25,7 +25,7 @@ jobs:
       - run: make -f Makefile.libretro SUBTARGET=tiny STRIP_SYMBOLS=1 -j2
 
       - name: ZIP Release
-        uses: papeloto/action-zip@v1
+        uses: vimtor/action-zip@v1
         with:
           files: mametiny_libretro.so mamearcade_libretro.so
           dest: mametiny_libretro.so.zip
