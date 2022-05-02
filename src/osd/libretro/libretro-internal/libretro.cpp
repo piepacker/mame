@@ -14,6 +14,7 @@
 #include "uiinput.h"
 #include "drivenum.h"
 #include "../frontend/mame/mame.h"
+#include "../frontend/mame/cheat.h"
 
 #include "libretro.h"
 #include "libretro_shared.h"
@@ -1089,8 +1090,47 @@ size_t retro_get_memory_size(unsigned type)
 }
 
 bool retro_load_game_special(unsigned game_type, const struct retro_game_info *info, size_t num_info) { return false; }
-void retro_cheat_reset(void) {}
-void retro_cheat_set(unsigned unused, bool unused1, const char* unused2) {}
+
+void retro_cheat_reset(void) {
+    if (!mame_machine_manager::instance())
+        return;
+
+    for (auto &curcheat : mame_machine_manager::instance()->cheat().entries()) {
+        curcheat->select_default_state();
+    }
+}
+
+void retro_cheat_set(unsigned index, bool enabled, const char *code) {
+    if (!mame_machine_manager::instance())
+        return;
+
+    // Use cheat description as code
+    for (auto &curcheat : mame_machine_manager::instance()->cheat().entries()) {
+        if (!std::strcmp(curcheat->description(), code)) {
+            log_cb(RETRO_LOG_INFO, "Find a cheat for description: %s\n", code);
+
+            // Disable/reset cheat
+            curcheat->select_default_state();
+
+            if (enabled) {
+                // Note: most?/all? cheat uses index 0 for the off state
+                // Warn about it
+                if (!index) {
+                    log_cb(RETRO_LOG_WARN, "warning 0 index for cheat (%s) will disable the cheat\n", code);
+                }
+                for (int i = 0; i < index; i++) {
+                    // Note: Nop for one shot
+                    curcheat->select_next_state();
+                }
+                // Note: only do stuff for oneshot and oneshot_parameter
+                curcheat->activate();
+            }
+
+            break;
+        }
+    }
+}
+
 void retro_set_controller_port_device(unsigned in_port, unsigned device) {}
 
 void *retro_get_fb_ptr(void)
