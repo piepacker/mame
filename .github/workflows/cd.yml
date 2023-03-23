@@ -10,7 +10,7 @@ defaults:
 
 jobs:
   build_linux:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - uses: actions/checkout@v2
@@ -32,7 +32,7 @@ jobs:
 
       - name: Get release
         id: get_release
-        uses: bruceadams/get-release@v1.2.2
+        uses: bruceadams/get-release@v1.3.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -45,3 +45,68 @@ jobs:
           asset_path: mametiny_libretro.so.zip
           asset_name: mametiny-Linux-x86_64.zip
           asset_content_type: application/zip
+
+  build_osx:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - run: make -f Makefile.libretro SUBTARGET=arcade STRIP_SYMBOLS=1 -j1
+      - run: make -f Makefile.libretro SUBTARGET=tiny STRIP_SYMBOLS=1 -j2
+
+      - name: ZIP Release
+        uses: vimtor/action-zip@v1
+        with:
+          files: mesen_libretro.dylib
+          dest: mesen_libretro.dylib.zip
+
+      - name: Get release
+        id: get_release
+        uses: bruceadams/get-release@v1.3.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.get_release.outputs.upload_url }}
+          asset_path: mesen_libretro.dylib.zip
+          asset_name: mesen-OSX-x86_64.zip
+          asset_content_type: application/zip
+
+  build_windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - run: CC=gcc make platform=win -f Makefile.libretro SUBTARGET=arcade STRIP_SYMBOLS=1 -j1
+      - run: CC=gcc make platform=win -f Makefile.libretro SUBTARGET=tiny STRIP_SYMBOLS=1 -j1
+
+      - name: ZIP Release
+        uses: vimtor/action-zip@v1
+        with:
+          files: mesen_libretro.dll
+          dest: mesen_libretro.dll.zip
+
+      - name: Get release
+        id: get_release
+        uses: bruceadams/get-release@v1.3.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.get_release.outputs.upload_url }}
+          asset_path: mesen_libretro.dll.zip
+          asset_name: mesen-Windows-x86_64.zip
+          asset_content_type: application/zip
+
