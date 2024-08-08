@@ -96,57 +96,51 @@ function createProjects_mame_tiny(_target, _subtarget)
 	}
 
 	files{
-			MAME_DIR .. "src/mame/drivers/neogeo.cpp",
+			MAME_DIR .. "src/mame/neogeo/neogeo.cpp",
 			MAME_DIR .. "src/mame/includes/neogeo.h",
-			MAME_DIR .. "src/mame/video/neogeo.cpp",
-			MAME_DIR .. "src/mame/drivers/neopcb.cpp",
-			MAME_DIR .. "src/mame/video/neogeo_spr.cpp",
+			MAME_DIR .. "src/mame/neogeo/neopcb.cpp",
+			MAME_DIR .. "src/mame/neogeo/neogeo_spr.cpp",
 			MAME_DIR .. "src/mame/video/neogeo_spr.h",
-			MAME_DIR .. "src/mame/machine/ng_memcard.cpp",
+			MAME_DIR .. "src/mame/neogeo/ng_memcard.cpp",
 			MAME_DIR .. "src/mame/machine/ng_memcard.h",
 
 			-- aligatoruna
-			MAME_DIR .. "src/mame/drivers/gaelco2.cpp",
+			MAME_DIR .. "src/mame/gaelco/gaelco2.cpp",
 			MAME_DIR .. "src/mame/includes/gaelco2.h",
-			MAME_DIR .. "src/mame/machine/gaelco2.cpp",
-			MAME_DIR .. "src/mame/video/gaelco2.cpp",
-			MAME_DIR .. "src/mame/machine/gaelco_ds5002fp.cpp",
+			MAME_DIR .. "src/mame/gaelco/gaelco_ds5002fp.cpp",
 			MAME_DIR .. "src/mame/machine/gaelco_ds5002fp.h",
 
 		-- for ultennis
-		MAME_DIR .. "src/mame/drivers/artmagic.cpp",
-		MAME_DIR .. "src/mame/includes/artmagic.h",
-		MAME_DIR .. "src/mame/video/artmagic.cpp",
+		MAME_DIR .. "src/mame/misc/artmagic.cpp",
+		MAME_DIR .. "src/mame/misc/artmagic.h",
+		MAME_DIR .. "src/mame/misc/artmagic_v.cpp",
 
 			-- evosocc
-			MAME_DIR .. "src/mame/drivers/crystal.cpp",
+			MAME_DIR .. "src/mame/misc/crystal.cpp",
 
 		-- sharrier
-		MAME_DIR .. "src/mame/drivers/segahang.cpp",
+		MAME_DIR .. "src/mame/sega/segahang.cpp",
 		MAME_DIR .. "src/mame/includes/segahang.h",
-		MAME_DIR .. "src/mame/video/segahang.cpp",
-		MAME_DIR .. "src/mame/machine/fd1089.cpp",
+		MAME_DIR .. "src/mame/sega/fd1089.cpp",
 		MAME_DIR .. "src/mame/machine/fd1089.h",
-		MAME_DIR .. "src/mame/machine/fd1094.cpp",
+		MAME_DIR .. "src/mame/sega/fd1094.cpp",
 		MAME_DIR .. "src/mame/machine/fd1094.h",
-		MAME_DIR .. "src/mame/video/segaic16.cpp",
+		MAME_DIR .. "src/mame/sega/segaic16.cpp",
 		MAME_DIR .. "src/mame/video/segaic16.h",
-		MAME_DIR .. "src/mame/video/segaic16_road.cpp",
+		MAME_DIR .. "src/mame/sega/segaic16_road.cpp",
 		MAME_DIR .. "src/mame/video/segaic16_road.h",
-		MAME_DIR .. "src/mame/video/sega16sp.cpp",
+		MAME_DIR .. "src/mame/sega/sega16sp.cpp",
 		MAME_DIR .. "src/mame/video/sega16sp.h",
 
 		-- thoop2a
-		MAME_DIR .. "src/mame/video/thoop2.cpp",
-		MAME_DIR .. "src/mame/drivers/thoop2.cpp",
+		MAME_DIR .. "src/mame/gaelco/thoop2.cpp",
 
 		-- hdrtimes
-		MAME_DIR .. "src/mame/video/playmark.cpp",
-		MAME_DIR .. "src/mame/drivers/playmark.cpp",
+		MAME_DIR .. "src/mame/playmark/playmark.cpp",
 
 		-- stlforce
-		MAME_DIR .. "src/mame/drivers/stlforce.cpp",
-		MAME_DIR .. "src/mame/video/edevices.cpp",
+		MAME_DIR .. "src/mame/edevices/stlforce.cpp",
+		MAME_DIR .. "src/mame/edevices/edevices.cpp",
 	}
 end
 
