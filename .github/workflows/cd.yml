@@ -13,14 +13,14 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: true
 
       - run: sudo apt-get update && sudo apt-get install libgl1-mesa-dev
         # arcade is very slow to build. Limit to 1CPU due to huge memory requirement of
         # few files
-      - run: make -f Makefile.libretro SUBTARGET=arcade STRIP_SYMBOLS=1 -j1
+      - run: make -f Makefile.libretro SUBTARGET=arcade STRIP_SYMBOLS=1 -j2
         # building tiny is free after arcade
       - run: make -f Makefile.libretro SUBTARGET=tiny STRIP_SYMBOLS=1 -j2
 
@@ -47,6 +47,7 @@ jobs:
           asset_content_type: application/zip
 
   build_osx:
+    if: false
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
@@ -79,6 +80,7 @@ jobs:
           asset_content_type: application/zip
 
   build_windows:
+    if: false
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
