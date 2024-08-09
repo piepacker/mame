@@ -1,0 +1,5 @@
+build-docker:
+	docker build -t piepacker/mame-builder .
+	@#docker run -v $(shell pwd):/build docker.io/piepacker/mame-builder make -C /build -f Makefile.libretro SUBTARGET=arcade STRIP_SYMBOLS=1 -j4
+	docker run -v $(shell pwd):/build docker.io/piepacker/mame-builder make -C /build -f Makefile.libretro SUBTARGET=tiny STRIP_SYMBOLS=1 -j2
+	@# docker run -ti -v $(shell pwd):/build docker.io/piepacker/mame-builder bash
