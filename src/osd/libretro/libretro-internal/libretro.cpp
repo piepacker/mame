@@ -552,6 +552,23 @@ static void check_variables(void)
          cheats_enable = true;
    }
 
+   // ES: unfortunately this core does not seem to work
+   var.key   = CORE_NAME "_debug_enable";
+   var.value = NULL;
+   if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && var.value)
+   {
+      if (!strcmp(var.value, "disabled")) {
+         debug_enable = false;
+        log_cb(RETRO_LOG_INFO, "-debug is disabled\n");
+	  }
+      else if (!strcmp(var.value, "enabled")) {
+         debug_enable = true;
+		 log_cb(RETRO_LOG_INFO, "-debug is enabled\n");
+	  } else {
+		 log_cb(RETRO_LOG_INFO, "-debug is: %s\n", var.value);
+	  }
+   }
+
    var.key   = CORE_NAME "_throttle";
    var.value = NULL;
    if (environ_cb(RETRO_ENVIRONMENT_GET_VARIABLE, &var) && var.value)
@@ -588,8 +605,13 @@ static void check_variables(void)
    {
       if (!strcmp(var.value, "disabled"))
          read_config_enable = false;
-      if (!strcmp(var.value, "enabled"))
+      if (!strcmp(var.value, "enabled")) {
          read_config_enable = true;
+         // enable debug when mame_read_config is 'enabled'
+         // not very nice for now, but the regular way did not seem to work
+         // so this is a workaround
+         debug_enable = true;
+	  }
    }
 
    var.key   = CORE_NAME "_write_config";

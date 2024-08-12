@@ -51,6 +51,7 @@ int  lightgun_mode = RETRO_SETTING_LIGHTGUN_MODE_DISABLED;
 int  lightgun_offscreen_mode = RETRO_SETTING_LIGHTGUN_OFFSCREEN_MODE_FREE;
 bool mouse_enable = false;
 bool cheats_enable = false;
+bool debug_enable = false;
 bool alternate_renderer = false;
 bool boot_to_osd_enable = false;
 bool boot_to_bios_enable = false;
@@ -522,6 +523,9 @@ static void Set_Default_Option(void)
       Add_Option("-ppdebug");
    else
       Add_Option("-noppdebug");
+
+   if (debug_enable)
+      Add_Option("-debug");
 
    if (write_config_enable)
       Add_Option("-writeconfig");

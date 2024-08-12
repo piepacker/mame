@@ -84,6 +84,7 @@ extern int  lightgun_mode;
 extern int  lightgun_offscreen_mode;
 extern bool mouse_enable;
 extern bool cheats_enable;
+extern bool debug_enable;
 extern bool alternate_renderer;
 extern bool boot_to_osd_enable;
 extern bool boot_to_bios_enable;
