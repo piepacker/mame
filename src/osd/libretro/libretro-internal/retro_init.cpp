@@ -425,6 +425,7 @@ static void Set_Rotation_Option(int gameRot)
    libretro_rotation_allow = 0;
    internal_rotation_allow = 0;
 
+   log_cb(RETRO_LOG_DEBUG, "Rotation: rotation_mode=%i RETRO_ENVIRONMENT_SET_ROTATION=%i\n", rotation_mode, environ_cb(RETRO_ENVIRONMENT_SET_ROTATION, &screenRot)?1:0);
    if (rotation_mode == ROTATION_MODE_LIBRETRO && environ_cb(RETRO_ENVIRONMENT_SET_ROTATION, &screenRot))
    {
       /* Allow libretro rotation */
